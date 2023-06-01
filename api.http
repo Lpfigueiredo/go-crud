@@ -5,7 +5,7 @@ Content-Type: application/json
 	"isbn": "123",
 	"title": "123",
 	"author": "123",
-	"price": 123
+	"price": "123"
 }
 
 ###

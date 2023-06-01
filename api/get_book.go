@@ -1,7 +1,6 @@
 package api
 
 import (
-	"log"
 	"lpfigueiredo/go-crud/pkg"
 	"net/http"
 
@@ -21,11 +20,7 @@ func (s *Server) HandleGetByISBN(ctx *gin.Context) {
 	}
 
 	if ret.Error != nil {
-		err := ctx.AbortWithError(http.StatusBadRequest, ret.Error)
-
-		if err != nil {
-			log.Fatal(err)
-		}
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, ret.Error)
 
 		return
 	}

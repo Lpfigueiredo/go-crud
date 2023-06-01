@@ -15,11 +15,7 @@ func (s *Server) HandleAddBook(ctx *gin.Context) {
 	err := ctx.BindJSON(&book)
 
 	if err != nil {
-		err := ctx.AbortWithError(http.StatusBadRequest, err)
-
-		if err != nil {
-			log.Fatal(err)
-		}
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, err.Error())
 
 		return
 	}

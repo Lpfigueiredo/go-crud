@@ -1,13 +1,24 @@
-POST http://localhost:8050/books
+POST http://localhost:8050/products
 Content-Type: application/json
 
 {
-	"isbn": "123",
-	"title": "123",
-	"author": "123",
-	"price": "123"
+	"code": "p1",
+	"price": "10"
 }
 
 ###
 
-GET http://localhost:8050/books/123
+GET http://localhost:8050/products
+
+###
+PUT http://localhost:8050/products/1
+Content-Type: application/json
+
+{
+	"code": "p1",
+	"price": "100"
+}
+
+###
+
+DELETE http://localhost:8050/products/1

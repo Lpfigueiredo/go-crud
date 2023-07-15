@@ -6,15 +6,14 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/wire"
 )
 
 type ProductAPI struct {
 	ProductService ProductService
 }
 
-func ProvideProductAPI(p ProductService) ProductAPI {
-	return ProductAPI{ProductService: p}
-}
+var ProductAPISet = wire.NewSet(wire.Struct(new(ProductAPI), "*"))
 
 func (p *ProductAPI) FindAll(c *gin.Context) {
 	products := p.ProductService.FindAll()

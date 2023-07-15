@@ -1,14 +1,15 @@
 package product
 
-import "gorm.io/gorm"
+import (
+	"github.com/google/wire"
+	"gorm.io/gorm"
+)
 
 type ProductRepository struct {
 	DB *gorm.DB
 }
 
-func ProvideProductRepostiory(DB *gorm.DB) ProductRepository {
-	return ProductRepository{DB: DB}
-}
+var ProductRepositorySet = wire.NewSet(wire.Struct(new(ProductRepository), "*"))
 
 func (p *ProductRepository) FindAll() []Product {
 	var products []Product

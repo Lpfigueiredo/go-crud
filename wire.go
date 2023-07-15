@@ -11,7 +11,7 @@ import (
 )
 
 func initProductAPI(db *gorm.DB) product.ProductAPI {
-	wire.Build(product.ProvideProductRepostiory, product.ProvideProductService, product.ProvideProductAPI)
+	wire.Build(product.ProductRepositorySet, product.ProductServiceSet, product.ProductAPISet)
 
 	return product.ProductAPI{}
 }

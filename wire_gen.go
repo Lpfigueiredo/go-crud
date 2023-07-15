@@ -14,8 +14,14 @@ import (
 // Injectors from wire.go:
 
 func initProductAPI(db *gorm.DB) product.ProductAPI {
-	productRepository := product.ProvideProductRepostiory(db)
-	productService := product.ProvideProductService(productRepository)
-	productAPI := product.ProvideProductAPI(productService)
+	productRepository := product.ProductRepository{
+		DB: db,
+	}
+	productService := product.ProductService{
+		ProductRepository: productRepository,
+	}
+	productAPI := product.ProductAPI{
+		ProductService: productService,
+	}
 	return productAPI
 }

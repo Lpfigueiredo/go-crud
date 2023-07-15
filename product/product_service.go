@@ -1,12 +1,12 @@
 package product
 
+import "github.com/google/wire"
+
 type ProductService struct {
 	ProductRepository ProductRepository
 }
 
-func ProvideProductService(p ProductRepository) ProductService {
-	return ProductService{ProductRepository: p}
-}
+var ProductServiceSet = wire.NewSet(wire.Struct(new(ProductService), "*"))
 
 func (p *ProductService) FindAll() []Product {
 	return p.ProductRepository.FindAll()
